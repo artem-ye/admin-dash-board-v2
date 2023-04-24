@@ -1,14 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
-const LazyImage = ({ path, placeholder, loadError, ...props }) => {
-	const [img, setImg] = useState(placeholder || path);
+const LazyImage = ({ path, placeHolder, loadError, ...props }) => {
+	const [img, setImg] = useState(path);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const onLoad = useCallback(() => {
-		setImg(path);
-	}, [path]);
+		setIsLoading(false);
+	}, []);
 
 	const onError = useCallback(() => {
-		setImg(loadError || placeholder);
-	}, [loadError, placeholder]);
+		setIsLoading(false);
+		setImg(loadError);
+	}, [loadError]);
 
 	useEffect(() => {
 		const imageObj = new Image();
@@ -21,6 +23,6 @@ const LazyImage = ({ path, placeholder, loadError, ...props }) => {
 		};
 	}, [path, onLoad, onError]);
 
-	return <img {...props} alt={img} src={img} />;
+	return isLoading ? placeHolder : <img {...props} alt={img} src={img} />;
 };
 export default LazyImage;

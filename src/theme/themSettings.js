@@ -30,6 +30,9 @@ const colorsSettings = (mode) => {
 					background: {
 						default: colors.primary[500],
 					},
+					// success: {
+					// 	main: '#67c6b024',
+					// },
 			  }
 			: {
 					// palette values for light mode

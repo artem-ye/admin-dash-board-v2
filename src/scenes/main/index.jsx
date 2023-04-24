@@ -1,31 +1,6 @@
-import { Box, TextField, Typography, styled, useTheme } from '@mui/material';
-import { tokens, LIGHT_MODE } from '../../theme/';
-
-const StyledTextField = styled(TextField)(({ theme }) => {
-	if (theme.palette.mode === LIGHT_MODE) {
-		return {};
-	}
-
-	const colors = tokens(theme.palette.mode);
-	const greenAccentColor = colors.greenAccent[500];
-
-	return {
-		'&:hover label': {
-			color: greenAccentColor,
-		},
-		'& label.Mui-focused': {
-			color: greenAccentColor,
-		},
-		'& .MuiOutlinedInput-root': {
-			'&:hover fieldset': {
-				borderColor: greenAccentColor,
-			},
-			'&.Mui-focused fieldset': {
-				borderColor: greenAccentColor,
-			},
-		},
-	};
-});
+import { Box, Typography, useTheme } from '@mui/material';
+import { tokens } from '../../theme/';
+import StyledTextField from '../../components/controls/StyledTextField';
 
 const Main = () => {
 	const theme = useTheme();
@@ -37,7 +12,7 @@ const Main = () => {
 			<Typography variant='h5' color={colors.greenAccent[400]}>
 				World
 			</Typography>
-			<StyledTextField label='Your name' variant='outlined' />
+			<StyledTextField label='Your name' />
 		</Box>
 	);
 };

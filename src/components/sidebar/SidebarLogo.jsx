@@ -1,4 +1,4 @@
-import { Box, IconButton, Typography, useTheme } from '@mui/material';
+import { Box, IconButton, LinearProgress, Typography, useTheme } from '@mui/material';
 
 import { MenuOutlined as MenuIcon } from '@mui/icons-material';
 import { useProSidebar } from 'react-pro-sidebar';
@@ -30,32 +30,38 @@ const SidebarLogo = () => {
 				</IconButton>
 			</Box>
 
-			{!collapsed && (
+			{
 				<Box
-					display='flex'
+					display={collapsed ? 'none' : 'flex'}
 					flexDirection='column'
 					alignItems='center'
 					justifyContent='center'
 					mt='20px'
 					gap='10px'
 					overflow={'hidden'}
-					// minWidth={'150px'}
 				>
-					{/* <img
-						alt='profile-user'
-						width='100px'
-						height='100px'
-						src='./assets/user.jpeg'
-						style={{ cursor: 'pointer', borderRadius: '50%', objectFit: 'cover' }}
-					/> */}
 					<LazyImage
 						path='./assets/user.jpeg'
-						placeholder='./logo192.png'
 						loadError='./logo192.png'
+						placeHolder={
+							<Box
+								width='100px'
+								height='100px'
+								display='flex'
+								alignItems='center'
+								justifyContent='center'
+							>
+								<Typography letterSpacing='1px' color={colors.grey[300]}>
+									loading...
+									<LinearProgress color='inherit' />
+								</Typography>
+							</Box>
+						}
 						width='100px'
 						height='100px'
 						style={{ cursor: 'pointer', borderRadius: '50%', objectFit: 'cover' }}
 					/>
+
 					<Typography variant='h3' fontWeight='800'>
 						Artem Y.
 					</Typography>
@@ -63,7 +69,7 @@ const SidebarLogo = () => {
 						access: root
 					</Typography>
 				</Box>
-			)}
+			}
 		</>
 	);
 };
