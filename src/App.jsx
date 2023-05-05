@@ -1,24 +1,10 @@
 import { CssBaseline } from '@mui/material';
-import TopBar from './components/topbar';
-// import Main from './scenes/main';
+
 import { AppThemeProvider } from './theme';
 import { ProSidebarProvider } from 'react-pro-sidebar';
-import Sidebar from './components/sidebar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import EditUserProfile from './scenes/editUserProfile';
-import Login from './scenes/login';
-
-const MainLayout = () => (
-	<>
-		<Sidebar />
-		<main className='content'>
-			<TopBar />
-			<EditUserProfile />
-		</main>
-	</>
-);
-
-// const LoginLayout = () => <h1>login</h1>;
+import LoginRoute from './routes/login/login.route';
+import MainRoute from './routes/main/main.route';
 
 function App() {
 	return (
@@ -28,14 +14,9 @@ function App() {
 					<CssBaseline />
 					<div className='app'>
 						<Routes>
-							<Route Component={MainLayout} path='/' />
-							<Route Component={Login} path='/login' />
+							<Route path='/*' Component={MainRoute} />
+							<Route path='/login' Component={LoginRoute} />
 						</Routes>
-						{/* <Sidebar />
-						<main className='content'>
-							<TopBar />
-							<EditUserProfile />
-						</main> */}
 					</div>
 				</ProSidebarProvider>
 			</AppThemeProvider>

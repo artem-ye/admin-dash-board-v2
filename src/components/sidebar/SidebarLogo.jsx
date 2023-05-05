@@ -4,12 +4,14 @@ import { MenuOutlined as MenuIcon } from '@mui/icons-material';
 import { useProSidebar } from 'react-pro-sidebar';
 import { tokens } from '../../theme';
 import LazyImage from '../lazyImage';
+import { useNavigate } from 'react-router-dom';
 
 const SidebarLogo = () => {
 	const { collapsed, collapseSidebar } = useProSidebar();
 	const theme = useTheme();
 	const mode = theme.palette.mode;
 	const colors = tokens(mode);
+	const navigate = useNavigate();
 
 	const HOVER_COLOR = colors.blueAccent[400];
 
@@ -60,6 +62,7 @@ const SidebarLogo = () => {
 						width='100px'
 						height='100px'
 						style={{ cursor: 'pointer', borderRadius: '50%', objectFit: 'cover' }}
+						onClick={() => navigate('profile')}
 					/>
 
 					<Typography variant='h3' fontWeight='800'>

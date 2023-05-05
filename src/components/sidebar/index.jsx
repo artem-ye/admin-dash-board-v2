@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useTheme } from '@mui/material';
@@ -26,12 +26,15 @@ const Sidebar = () => {
 	const [activeItem, setActiveItem] = useState('/');
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		navigate(activeItem);
-	}, [activeItem, navigate]);
-
 	const renderMenuItem = ({ title, path, Icon }) => (
-		<MenuItem icon={<Icon />} active={activeItem === path} onClick={() => setActiveItem(path)}>
+		<MenuItem
+			icon={<Icon />}
+			active={activeItem === path}
+			onClick={() => {
+				setActiveItem(path);
+				navigate(activeItem);
+			}}
+		>
 			{title}
 		</MenuItem>
 	);
