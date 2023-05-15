@@ -66,14 +66,14 @@ const Sidebar = () => {
 
 			<MenuSubTitle title={'General'} collapsed={collapsed} />
 			<Menu menuItemStyles={menuItemStyles}>
-				{renderMenuItem({ title: 'Documentation', path: '/docs', Icon: DocumentationIcon })}
-				{renderMenuItem({ title: 'Calendar', path: '/calendar', Icon: CalendarIcon })}
+				{renderMenuItem({ title: 'Documentation', path: '/', Icon: DocumentationIcon })}
+				{renderMenuItem({ title: 'Calendar', path: '/', Icon: CalendarIcon })}
 			</Menu>
 
 			<MenuSubTitle title={'Charts'} collapsed={collapsed} />
 			<Menu menuItemStyles={menuItemStyles}>
-				{renderMenuItem({ title: 'Pie charts', path: '/pieCharts', Icon: PieChartIcon })}
-				{renderMenuItem({ title: 'Line charts', path: '/lineCharts', Icon: LineChartIcon })}
+				{renderMenuItem({ title: 'Pie charts', path: '/', Icon: PieChartIcon })}
+				{renderMenuItem({ title: 'Line charts', path: '/', Icon: LineChartIcon })}
 			</Menu>
 		</ProSideBar>
 	);
